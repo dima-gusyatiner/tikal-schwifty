@@ -1,9 +1,13 @@
 'use client';
 
+import { useMemo } from 'react';
+
 import { getIdFromResource } from '@/api';
 import { useCharactersByIds, useLeastPopularCharacter } from '@/hooks';
 import { Location } from '@/interfaces';
-import { useMemo } from 'react';
+import { Card, Loading } from '@/ui';
+
+import { CharacterCard } from './character-card';
 
 export interface LeastPopularCharacterProps {
 	location: Location;
@@ -23,18 +27,25 @@ export function LeastPopularCharacter({
 	const { data: characters, isFetching } = useCharactersByIds(characterIds);
 	const character = useLeastPopularCharacter(characters);
 
-	// Debug
-	const loadingMessage = isFetching ? 'Loading...' : 'Done!';
-	console.log({ isFetching, character, characters });
+	// Loading
+	if (isFetching) {
+		return <Loading message="Fetching least popular character..." />;
+	}
 
 	// Render
+	if (!character) {
+		return <Card>No character found</Card>;
+	}
+
 	return (
-		<>
-			<p>
-				This page will show the least popular character for the selected
-				location (at {location.name}).
+		<div className="grid grid-cols-12 justify-center">
+			<p className="col-span-12 mb-4">
+				From the information we could gather, the least popular character is
+				that was <u>last seen</u> on <strong> {location.name}</strong> is:{' '}
 			</p>
-			<p>{loadingMessage}</p>
-		</>
+			<div className="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4">
+				<CharacterCard character={character} />
+			</div>
+		</div>
 	);
 }

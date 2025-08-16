@@ -16,17 +16,19 @@ export default async function LeastPopularCharacterPage({
 	const location = await getLocationById(Number(locationId));
 
 	return (
-		<div>
+		<>
 			<Link
 				href="/"
-				className="inline-flex items-center mb-4"
+				className="col-span-full inline-flex items-center mb-4"
 			>
 				<ArrowLeftIcon className="mr-1" />
 				Home
 			</Link>
 
-			<h1 className="text-3xl font-bold">Least Popular Character</h1>
+			<h1 className="col-span-full text-3xl font-bold mb-4">
+				Least Popular Character
+			</h1>
 			<LeastPopularCharacter location={location} />
-		</div>
+		</>
 	);
 }

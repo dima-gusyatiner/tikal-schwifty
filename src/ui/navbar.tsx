@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export function Navbar() {
 	return (
-		<header className="border-b border-slate-400 bg-card text-card-foreground shadow">
+		<header className="border-b border-slate-300 bg-card text-card-foreground shadow">
 			<div className="container px-4 mx-auto flex h-16 items-center">
 				<Link
 					href="/"
