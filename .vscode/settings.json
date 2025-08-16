@@ -1,0 +1,31 @@
+{
+	// Prettier
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+
+	// Extension: ESLint
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "always"
+	},
+	"[javascript]": {
+		"editor.formatOnSave": false
+	},
+	"[typescript]": {
+		"editor.formatOnSave": false
+	},
+	"[javascriptreact]": {
+		"editor.formatOnSave": false
+	},
+	"[typescriptreact]": {
+		"editor.formatOnSave": false
+	},
+
+	// JSON with Comments
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features",
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features",
+	},
+	"json.format.keepLines": true
+}
