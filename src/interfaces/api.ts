@@ -19,5 +19,9 @@ export interface Info<T> {
 		/** Link to the previous page (if it exists) */
 		prev: string | null;
 	};
-	results?: T;
+	results?: T[];
+}
+
+export interface InfoWithFilter<T, F> extends Info<T> {
+	filter: F;
 }
