@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowLeftIcon } from 'lucide-react';
+import { getLocationById } from '@/api';
 
 export interface LeastPopularCharacterPageProps {
 	params: Promise<{
@@ -11,6 +12,7 @@ export default async function LeastPopularCharacterPage({
 	params,
 }: LeastPopularCharacterPageProps) {
 	const { ['location-id']: locationId } = await params;
+	const location = await getLocationById(Number(locationId));
 
 	return (
 		<div>
