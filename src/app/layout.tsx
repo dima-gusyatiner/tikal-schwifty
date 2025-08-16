@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { cn, Footer, Navbar } from '@/ui';
+import { Providers } from './providers';
 
 import './globals.css';
 
@@ -36,9 +37,11 @@ export default function RootLayout({
 					'antialiased flex min-h-screen flex-col',
 				)}
 			>
-				<Navbar />
-				<main className="flex-1 container mx-auto p-4">{children}</main>
-				<Footer />
+				<Providers>
+					<Navbar />
+					<main className="flex-1 container mx-auto p-4">{children}</main>
+					<Footer />
+				</Providers>
 			</body>
 		</html>
 	);
