@@ -1,7 +1,26 @@
+'use client';
+
+import { useEpisodeCountByCharacterNames } from '@/hooks';
 import { ArrowLeftIcon } from 'lucide-react';
 import Link from 'next/link';
 
+/**
+ * List of character names hardcoded
+ * @todo Replace with dynamic user-input
+ */
+export const characterNames = [
+	'Abradolf Lincler',
+	'Arcade Alien',
+	'Morty Smith',
+	'Birdperson',
+	'Mr. Meeseeks',
+];
+
 export default function CharactersPopularityPage() {
+	const response = useEpisodeCountByCharacterNames(characterNames);
+
+	console.log(response);
+
 	return (
 		<div>
 			<Link

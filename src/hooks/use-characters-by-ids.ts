@@ -1,4 +1,4 @@
-import { Character, Info } from '@/interfaces';
+import { Character } from '@/interfaces';
 import { constants } from '@/constants';
 import {
 	QueryObserverResult,
@@ -8,7 +8,7 @@ import {
 import { useMemo } from 'react';
 import { getCharactersByIds, separateIdsToChunks } from '@/api';
 
-export type CharacterQueryResult = Pick<
+export type CharactersByIdQueryResult = Pick<
 	UseQueryResult<Character[]>,
 	| 'isPending'
 	| 'isLoading'
@@ -27,7 +27,7 @@ export type CharacterQueryResult = Pick<
  * @param ids Array of character IDs.
  * @returns Query result for the character data.
  */
-export function useCharactersByIds(ids: number[]): CharacterQueryResult {
+export function useCharactersByIds(ids: number[]): CharactersByIdQueryResult {
 	const idChunks = useMemo(
 		() => separateIdsToChunks(ids, constants.perPage),
 		[ids],
@@ -38,7 +38,7 @@ export function useCharactersByIds(ids: number[]): CharacterQueryResult {
 			queryKey: ['characters', idChunk],
 			queryFn: () => getCharactersByIds(idChunk),
 		})),
-		combine: combineCharacterQueries,
+		combine: combineCharactersByIdsQueries,
 	});
 
 	return response;
@@ -49,9 +49,9 @@ export function useCharactersByIds(ids: number[]): CharacterQueryResult {
  * @param results Array of character query results.
  * @returns Combined character query result.
  */
-export function combineCharacterQueries(
+export function combineCharactersByIdsQueries(
 	results: QueryObserverResult<Character[], Error>[],
-): CharacterQueryResult {
+): CharactersByIdQueryResult {
 	// Status Booleans
 	const isPending = results.some(r => r.isPending);
 	const isLoading = results.some(r => r.isLoading);
