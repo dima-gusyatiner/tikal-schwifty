@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowLeftIcon } from 'lucide-react';
+import { LeastPopularCharacter } from './least-popular-character';
 import { getLocationById } from '@/api';
 
 export interface LeastPopularCharacterPageProps {
@@ -25,10 +26,7 @@ export default async function LeastPopularCharacterPage({
 			</Link>
 
 			<h1 className="text-3xl font-bold">Least Popular Character</h1>
-			<p>
-				This page will show the least popular character for the selected
-				location (#{locationId}).
-			</p>
+			<LeastPopularCharacter location={location} />
 		</div>
 	);
 }
