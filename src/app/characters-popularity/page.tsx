@@ -8,7 +8,7 @@ import { CharactersPopularity } from './characters-popularity';
  * List of character names hardcoded
  * @todo Replace with dynamic user-input
  */
-export const characterNames = [
+const characterNames = [
 	'Abradolf Lincler',
 	'Arcade Alien',
 	'Morty Smith',
