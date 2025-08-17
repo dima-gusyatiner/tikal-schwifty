@@ -9,6 +9,9 @@ export interface LeastPopularCharacterPageProps {
 	}>;
 }
 
+/**
+ * Note that this is a server-component, it uses url-segment from props
+ */
 export default async function LeastPopularCharacterPage({
 	params,
 }: LeastPopularCharacterPageProps) {
