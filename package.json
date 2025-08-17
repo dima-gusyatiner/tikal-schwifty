@@ -2,6 +2,14 @@
   "name": "tikal-schwifty",
   "version": "0.1.0",
   "private": true,
+  "license": "UNLICENSED",
+  "author": "Dima Gusyatiner",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dima-gusyatiner/tikal-schwifty.git"
+  },
+  "homepage": "https://tikal-schwifty.vercel.app/",
+
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
