@@ -2,17 +2,22 @@ import { useMemo } from 'react';
 import { useCharactersByFilters } from './use-characters-by-filters';
 
 export type EpisodeCountByCharacterNames = {
-	[name: string]: number;
+	[characterName: string]: number;
+};
+
+export type EpisodeCountByCharacterNamesResponse = {
+	episodeCountByCharacterName: EpisodeCountByCharacterNames | undefined;
+	isFetching: boolean;
 };
 
 export function useEpisodeCountByCharacterNames(
 	characterNames: string[],
-): EpisodeCountByCharacterNames | undefined {
-	const { data: charactersByFilterMap } = useCharactersByFilters(
+): EpisodeCountByCharacterNamesResponse {
+	const { data: charactersByFilterMap, isFetching } = useCharactersByFilters(
 		characterNames.map(name => ({ name })),
 	);
 
-	return useMemo(() => {
+	const episodeCountByCharacterName = useMemo(() => {
 		if (!charactersByFilterMap) {
 			return undefined;
 		}
@@ -36,4 +41,6 @@ export function useEpisodeCountByCharacterNames(
 		}
 		return episodeCountByCharacterName;
 	}, [charactersByFilterMap]);
+
+	return { episodeCountByCharacterName, isFetching };
 }

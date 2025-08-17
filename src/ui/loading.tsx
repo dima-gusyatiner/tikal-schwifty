@@ -1,13 +1,5 @@
 import { Loader2Icon } from 'lucide-react';
-import {
-	Card,
-	CardAction,
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from './card';
+import { Card, CardContent } from './card';
 
 export interface LoadingProps {
 	message?: string;

@@ -1,3 +1,4 @@
+export * from './bar-chart';
 export * from './button';
 export * from './card';
 export * from './footer';

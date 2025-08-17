@@ -1,8 +1,8 @@
 'use client';
 
-import { useEpisodeCountByCharacterNames } from '@/hooks';
 import { ArrowLeftIcon } from 'lucide-react';
 import Link from 'next/link';
+import { CharactersPopularity } from './characters-popularity';
 
 /**
  * List of character names hardcoded
@@ -17,10 +17,6 @@ export const characterNames = [
 ];
 
 export default function CharactersPopularityPage() {
-	const response = useEpisodeCountByCharacterNames(characterNames);
-
-	console.log(response);
-
 	return (
 		<div>
 			<Link
@@ -32,7 +28,11 @@ export default function CharactersPopularityPage() {
 			</Link>
 
 			<h1 className="text-3xl font-bold">Characters Popularity</h1>
-			<p>This page will show the popularity of characters in a chart format.</p>
+			<p className="mb-4">
+				This page will show the popularity of characters in a bar-chart format.
+			</p>
+
+			<CharactersPopularity characterNames={characterNames} />
 		</div>
 	);
 }
